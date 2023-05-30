@@ -29,5 +29,6 @@ function play(playerSelection, computerSelection){
 }
 
 let userInput = prompt("Enter Rock, Paper, or Scissors to play!", "Rock");
-let result = play(userInput,getComputerChoice());
+let computerInput = getComputerChoice();
+let result = play(userInput, computerInput);
 console.log(result);
