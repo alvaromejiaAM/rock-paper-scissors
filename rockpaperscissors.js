@@ -22,7 +22,9 @@ function play(playerSelection, computerSelection){
   if(playerSelection === computerSelection){
     return (1); //tie
   }
-  else if(playerSelection === `rock` && computerSelection === 'scissors' || playerSelection === `paper` && computerSelection === 'rock' || playerSelection === `scissors` && computerSelection === 'paper'){
+  else if(playerSelection === `rock` && computerSelection === 'scissors' 
+        || playerSelection === `paper` && computerSelection === 'rock' 
+        || playerSelection === `scissors` && computerSelection === 'paper'){
     return (2); //user wins
   }
   else{
