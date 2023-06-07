@@ -12,7 +12,7 @@ function getComputerChoice(){
     return `Scissors`;
     break;
  }
-}
+}//test
 
 function play(playerSelection, computerSelection){
   //remove case sensitivity
