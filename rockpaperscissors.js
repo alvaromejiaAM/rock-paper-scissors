@@ -12,7 +12,7 @@ function getComputerChoice(){
     return `Scissors`;
     break;
  }
-}//test
+}
 
 function play(playerSelection, computerSelection){
   //remove case sensitivity
@@ -33,7 +33,7 @@ function play(playerSelection, computerSelection){
 }
 
 function game(){
-    let userInput = prompt("Enter Rock, Paper, or Scissors to play!", "Rock");
+
     let computerInput = getComputerChoice();
     let result = play(userInput, computerInput);
 
@@ -50,21 +50,10 @@ function game(){
     }
 }
 
-function endResult(pScore, cScore){
-  if(pScore === cScore){ //Log who won the match
-    console.log(`The match is a tie!`);
-  }
-  else if(pScore > cScore){
-    console.log(`You win the match!`);
-  }
-  else{
-    console.log(`You lose the match...`);
-  }
-}
+const container = document.querySelector('.container');
 
 let pScore = 0; //player Score
 let cScore = 0; //computer Score
-for(let i = 0; i < 5; i++){
   victor = game();
   switch(victor){ //Score update
     case 1:
@@ -75,6 +64,4 @@ for(let i = 0; i < 5; i++){
     case 3:
       cScore++;
       break;
-  }
 }
-endResult(pScore, cScore);
