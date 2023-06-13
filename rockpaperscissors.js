@@ -18,7 +18,8 @@ function getComputerChoice(){
 function playRound(playerSelection){
   //remove case sensitivity
   playerSelection = playerSelection.toLowerCase();
-  computerSelection = getComputerChoice().toLowerCase;
+  let computerSelection = getComputerChoice();
+  computerSelection = computerSelection.toLowerCase();
 
   if(playerSelection === computerSelection){
     return (1); //tie
@@ -26,9 +27,15 @@ function playRound(playerSelection){
   else if(playerSelection === `rock` && computerSelection === 'scissors' 
         || playerSelection === `paper` && computerSelection === 'rock' 
         || playerSelection === `scissors` && computerSelection === 'paper'){
+          
+      console.log('won')
+     
     return (2); //user wins
+
   }
   else{
+    console.log('loss')
+
     return (3); //cpu wins
   }
 }
@@ -41,6 +48,14 @@ function game(){
     
 }
 
-const playerSelection = document.querySelector('.selection');
-playerSelection.addEventListener('click', () => 
-playRound(playerSelection.textContent));
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
+
+//Listeners
+rockBtn.addEventListener('click', () => 
+playRound(rockBtn.textContent));
+paperBtn.addEventListener('click', () => 
+playRound(paperBtn.textContent));
+scissorsBtn.addEventListener('click', () => 
+playRound(scissorsBtn.textContent));
