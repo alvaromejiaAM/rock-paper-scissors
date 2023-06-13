@@ -14,7 +14,7 @@ function getComputerChoice(){
  }
 }
 
-function play(playerSelection, computerSelection){
+function playRound(playerSelection, computerSelection){
   //remove case sensitivity
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerSelection.toLowerCase();
@@ -35,33 +35,12 @@ function play(playerSelection, computerSelection){
 function game(){
 
     let computerInput = getComputerChoice();
-    let result = play(userInput, computerInput);
+    let result = playRound(userInput, computerInput);
 
-    switch(result){  //log who won the round
-      case 1:
-        console.log(`This round is tie!`);
-        return 1;
-      case 2 :
-        console.log(`You win this round!`);
-        return 2;
-      case 3:
-        console.log(`Computer wins this round!`);
-        return 3;
-    }
+    
 }
 
-const container = document.querySelector('.container');
+let rockBtn = document.querySelector('.rock')
+let paperBtn = document.querySelector('.paper')
+let scissorsBtn = document.querySelector('.scissors')
 
-let pScore = 0; //player Score
-let cScore = 0; //computer Score
-  victor = game();
-  switch(victor){ //Score update
-    case 1:
-      break;
-    case 2:
-      pScore++;
-      break;
-    case 3:
-      cScore++;
-      break;
-}
