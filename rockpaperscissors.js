@@ -21,37 +21,49 @@ function playRound(playerSelection){
   let computerSelection = getComputerChoice();
   computerSelection = computerSelection.toLowerCase();
 
-  const container = document.querySelector('.container');
-  const announce = document.createElement('div');
-  announce.classList.add('announce');
- 
+  const roundWinner = document.querySelector('.roundWinner');
+
   if(playerSelection === computerSelection){
-    announce.textContent = 'The round is a tie!';
-    container.appendChild(announce);
+    roundWinner.innerText = 'This round is tie!';
     return (1); //tie
   }
   else if(playerSelection === `rock` && computerSelection === 'scissors' 
         || playerSelection === `paper` && computerSelection === 'rock' 
         || playerSelection === `scissors` && computerSelection === 'paper'){
              
-    announce.textContent = 'You won the round!';
-    container.appendChild(announce);
+    roundWinner.innerText = 'You win this round!';
     return (2); //user wins
 
   }
   else{
-    announce.textContent = 'The computer wins...';
-    container.appendChild(announce);
+    roundWinner.innerText = 'The computer wins this round...';
+
     return (3); //cpu wins
   }
 }
 
-function game(){
+function outputScore(winner){
+    const score = document.querySelector('.score');
+    const playerScore = document.createElement('p');
+    const computerScore = document.createElement('p');
+    playerScore.classList.add('playerScore');
+    computerScore.classList.add('computerScore');
+    let playerCounter = 0;
+    let compCounter = 0;
 
-    let computerInput = getComputerChoice();
-    let result = play(userInput, computerInput);
+    if(winner === 3){
+      compCounter++;
+      computerScore.textContent = `${compCounter}`;
+      score.appendChild(computerScore);      
+    }
+    else if(winner === 2){
+      playerCounter++;
+      playerScore.textContent = `${playerCounter}`;
+      score.appendChild(playerScore);
+    }
 
 }
+
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
