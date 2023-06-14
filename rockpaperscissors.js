@@ -5,13 +5,10 @@ function getComputerChoice(){
  switch(compChoice){ //Return Values
   case 1:
     return `Rock`;
-    break;
   case 2:
     return `Paper`;
-    break;
   case 3:
     return `Scissors`;
-    break;
  }
 }
 
@@ -25,49 +22,58 @@ function playRound(playerSelection){
 
   if(playerSelection === computerSelection){
     roundWinner.innerText = 'This round is tie!';
-    return (1); //tie
+    return outputScore(1); //tie
   }
   else if(playerSelection === `rock` && computerSelection === 'scissors' 
         || playerSelection === `paper` && computerSelection === 'rock' 
         || playerSelection === `scissors` && computerSelection === 'paper'){
              
     roundWinner.innerText = 'You win this round!';
-    return (2); //user wins
+    return outputScore(2); //user wins
 
   }
   else{
     roundWinner.innerText = 'The computer wins this round...';
-
-    return (3); //cpu wins
+    return outputScore(3); //cpu wins
   }
 }
 
-function outputScore(winner){
-    const score = document.querySelector('.score');
-    const playerScore = document.createElement('p');
-    const computerScore = document.createElement('p');
-    playerScore.classList.add('playerScore');
-    computerScore.classList.add('computerScore');
-    let playerCounter = 0;
-    let compCounter = 0;
+function outputScore(roundWinner){
+    const computerScore = document.querySelector('.computerScore');
+    const playerScore = document.querySelector('.playerScore');
+    const container = document.querySelector('.container');
+    const won = document.createElement('div');
+    won.classList.add('win');
+    let temp;
 
-    if(winner === 3){
-      compCounter++;
-      computerScore.textContent = `${compCounter}`;
-      score.appendChild(computerScore);      
+    if(roundWinner === 3){ //cpu tally
+      temp = computerScore.textContent;
+      Number(temp);
+      temp++;
+      if(temp % 5 === 0){
+        won.textContent = 'Computer wins the game!';
+        container.appendChild(won);
+      }
+      computerScore.innerText = `${temp}`;//output score computer
     }
-    else if(winner === 2){
-      playerCounter++;
-      playerScore.textContent = `${playerCounter}`;
-      score.appendChild(playerScore);
+    else if(roundWinner === 2){ //player tally
+      temp = playerScore.textContent;
+      Number(temp);
+      temp++;
+      if(temp % 5 === 0){
+        won.textContent = 'Player wins the game!';
+        container.appendChild(won);
+      }
+      playerScore.innerText = `${temp}`;//output score player
     }
-
 }
 
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
 
+
+let winner = 0;
 //Listeners
 rockBtn.addEventListener('click', () => 
 playRound(rockBtn.textContent));
